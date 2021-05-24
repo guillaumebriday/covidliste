@@ -4,7 +4,7 @@
   </h2>
 
   <div class="table-responsive">
-    <table class="table table-bordered table-hover" aria-describedby="users with roles">
+    <table class="table table-bordered table-hover table-sm" aria-describedby="users with roles">
       <thead class="thead-light">
       <tr>
         <th scope="col">Nom</th>
@@ -13,16 +13,20 @@
           <span class="ml-3">
               (
               Légende :
-              <span class="badge badge-primary">
-                Possédé
-              </span>
-              <span class="badge badge-info">
-                Hérité
-              </span>
-              <span class="badge badge-secondary">
+              <span class="badge badge-light">
+                <i class="fas fa-times"></i>
                 Non possédé
               </span>
+              <span class="badge badge-secondary">
+                <i class="fas fa-check"></i>
+                Possédé
+              </span>
+              <span class="badge badge-primary">
+                <i class="fas fa-check"></i>
+                Hérité
+              </span>
               <span class="badge badge-danger">
+                <i class="fas fa-check"></i>
                 Possédé mais inconnu
               </span>
               )

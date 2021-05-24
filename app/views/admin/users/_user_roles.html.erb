@@ -1,30 +1,35 @@
 <% if current_user.roles.any? %>
   <% Rails.application.config.x.covidliste["admin_roles"].each do |role_name, role_config| %>
     <% if user.roles.map(&:name).include? "#{role_name}"  %>
-      <span class="badge badge-primary" data-toggle="tooltip" data-placement="top"
+      <span class="badge badge-secondary" data-toggle="tooltip" data-placement="top"
             title="<%= role_name %> (possédé)">
+        <i class="fas fa-check"></i>
         <%= role_config[:name] || role_name %>
       </span>
     <% elsif user.has_role?(:"#{role_name}") %>
-      <span class="badge badge-info" data-toggle="tooltip" data-placement="top"
+      <span class="badge badge-primary" data-toggle="tooltip" data-placement="top"
             title="<%= role_name %> (hérité)">
+        <i class="fas fa-check"></i>
         <%= role_config[:name] || role_name %>
       </span>
     <% else %>
-      <span class="badge badge-secondary" data-toggle="tooltip" data-placement="top"
+      <span class="badge badge-light" data-toggle="tooltip" data-placement="top"
             title="<%= role_name %> (non possédé)">
+        <i class="fas fa-times"></i>
         <%= role_config[:name] || role_name %>
       </span>
     <% end %>
   <% end %>
   <% if user.has_role?(:volunteer) %>
-    <span class="badge badge-info" data-toggle="tooltip" data-placement="top"
+    <span class="badge badge-primary" data-toggle="tooltip" data-placement="top"
           title="volunteer (hérité)">
+      <i class="fas fa-check"></i>
       Volontaire
     </span>
   <% else %>
-    <span class="badge badge-secondary" data-toggle="tooltip" data-placement="top"
+    <span class="badge badge-light" data-toggle="tooltip" data-placement="top"
           title="volunteer (non possédé)">
+      <i class="fas fa-times"></i>
       Volontaire
     </span>
   <% end %>
@@ -32,6 +37,7 @@
     <% unless Rails.application.config.x.covidliste["admin_roles"].include? :"#{role_name}"  %>
       <span class="badge badge-danger" data-toggle="tooltip" data-placement="top"
             title="<%= role_name %> (possédé inconnu)">
+        <i class="fas fa-check"></i>
         <%= role_name %>
       </span>
     <% end %>
